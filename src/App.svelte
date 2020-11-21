@@ -1,30 +1,61 @@
 <script>
-	export let name;
+	import marked from 'marked';
+	
+	let markdown = '';
+	let showInputPanel = true;
 </script>
 
 <main>
-	<h1>Hello {name}!</h1>
-	<p>Visit the <a href="https://svelte.dev/tutorial">Svelte tutorial</a> to learn how to build Svelte apps.</p>
+	<div class="button-row">
+		<button on:click={() => markdown = ''}>
+			Clear
+		</button>
+		<button on:click={() => showInputPanel = !showInputPanel}>
+			{showInputPanel ? 'Hide' : 'Show'} input panel
+		</button>
+	</div>
+	<div class="io">
+		{#if showInputPanel}
+					<textarea id="input" class="io-container" bind:value={markdown}></textarea>
+		{/if}
+			<div id="output" class="io-container padding">{@html marked(markdown)}</div>
+	</div>
 </main>
 
 <style>
 	main {
-		text-align: center;
-		padding: 1em;
-		max-width: 240px;
-		margin: 0 auto;
+		height: 100%;
+		width: 100%;
+		display: flex;
+		flex-flow: column nowrap;
+		padding: 8px;
 	}
-
-	h1 {
-		color: #ff3e00;
-		text-transform: uppercase;
-		font-size: 4em;
-		font-weight: 100;
+	.button-row {
+		display: flex;
+		flex-flow: row nowrap;
 	}
-
-	@media (min-width: 640px) {
-		main {
-			max-width: none;
-		}
+	.button-row > * {
+		margin: 4px;
+	}
+	.button-row > *:first-child {
+		margin-left: 2px;
+		margin-right: 2px;
+	}
+	.io {
+		width: 100%;
+		display: flex;
+		flex-flow: row nowrap;
+		flex-grow: 1;
+	}
+	.io-container {
+		border: 1px solid #999;
+		border-radius: 2px;
+		width: 100%;
+		min-width: 50%;
+		height: 100%;
+		margin: 2px;
+	}
+	textarea {
+		resize: none;
 	}
 </style>

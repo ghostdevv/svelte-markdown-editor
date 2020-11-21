@@ -19,6 +19,7 @@
     "svelte-preprocess": "^4.6.0"
   },
   "dependencies": {
+    "marked": "^1.2.5",
     "sirv-cli": "^1.0.0"
   }
 }

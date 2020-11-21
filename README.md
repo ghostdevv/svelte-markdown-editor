@@ -1,9 +1,4 @@
-# Svelte & Postcss
-I wrote this template so I can easily impliment svelte and postcss together without having to rewrite it each time.
+# Svelte Markdown Editor
+Just a simple svelte markdown editor. Feel free to fork and use or recreate!
 
-The current plugins used for postcss are:
- - Autoprefixer
-
-Future Additions
- - Nested
- - Precss or some form of variable plugin
+The CSS is eh since it didn't port from svelte.dev/repl to easily. Will improve at some point.
